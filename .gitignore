@@ -11,3 +11,8 @@ gradlew.bat
 build
 bin
 test-output
+.idea/
+*.iml
+out/
+**/target/
+*.txt

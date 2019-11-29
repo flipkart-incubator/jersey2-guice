@@ -84,7 +84,7 @@ public class JerseyGuiceUtils {
   
   /**
    * Installs the given {@link Injector}.
-   * 
+   * @param injector Injector
    * @see JerseyGuiceModule
    */
   public static void install(Injector injector) {
@@ -98,7 +98,7 @@ public class JerseyGuiceUtils {
   /**
    * Installs a {@link ServiceLocatorGenerator} instead of an {@link Injector}. This 
    * is mostly needed for testing and bootstrapping.
-   * 
+   * @param delegate Delegate
    * @see #install(Injector)
    */
   public static void install(ServiceLocatorGenerator delegate) {
@@ -215,6 +215,7 @@ public class JerseyGuiceUtils {
   
   /**
    * @see #newServiceLocator(String, ServiceLocator)
+   * @return Instance of ServiceLocator
    */
   public static ServiceLocator newServiceLocator() {
     return newServiceLocator(null);
@@ -222,6 +223,8 @@ public class JerseyGuiceUtils {
   
   /**
    * @see #newServiceLocator(String, ServiceLocator)
+   * @param name Name
+   * @return Instance of ServiceLocator
    */
   public static ServiceLocator newServiceLocator(String name) {
     return newServiceLocator(name, null);
@@ -231,6 +234,9 @@ public class JerseyGuiceUtils {
    * Creates and returns a {@link ServiceLocator}.
    * 
    * NOTE: This code should be very similar to HK2's own {@link ServiceLocatorGeneratorImpl}.
+   * @param name Name
+   * @param parent Parent
+   * @return Instance of ServiceLocator
    */
   public static ServiceLocator newServiceLocator(String name, ServiceLocator parent) {
     if (parent != null && !(parent instanceof ServiceLocatorImpl)) {
@@ -278,6 +284,9 @@ public class JerseyGuiceUtils {
   
   /**
    * This method links the {@link Injector} to the {@link ServiceLocator}.
+   * @param injector Injector
+   * @param locator Service Locator
+   * @return Instance of ServiceLocator
    */
   public static ServiceLocator link(ServiceLocator locator, Injector injector) {
     
@@ -305,7 +314,7 @@ public class JerseyGuiceUtils {
   
   /**
    * @see #link(ServiceLocator, Injector)
-   * @see #newChildInjector(Injector, ServiceLocator)
+   * @return Instance of ServiceLocator
    */
   private static ServiceLocator link(ServiceLocator locator, 
       Injector injector, Iterable<? extends Binder> binders) {
